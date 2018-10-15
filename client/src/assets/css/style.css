@@ -1,0 +1,61 @@
+.m {
+   display: flex;
+}
+
+.blockA {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 50%;
+   padding-left: 2rem;
+   padding-right: 1rem;
+}
+
+.blockB {
+   position: absolute;
+   top: 0;
+   right: 0;
+   height: 100%;
+   width: 50%;
+   padding-top: 1rem;
+   padding-bottom: 1rem;
+   padding-left: 1rem;
+   padding-right: 2rem;
+}
+
+.list {
+   background-color: white;
+   color: black;
+}
+
+.list:hover {
+   background-color: hsl(171, 100%, 41%);
+   color: white;
+}
+
+strong {
+   color: white !important;
+}
+
+@media (max-width: 768px) {
+   .m {
+      display: block;
+   }
+
+   .blockA {
+      position: static;
+      width: 100%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+   }
+
+   .blockB {
+      position: static;
+      width: 100%;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+   }
+}

@@ -1,0 +1,61 @@
+const router = require('express').Router()
+const Song = require('../models/Song')
+const Word = require('../models/Word')
+
+// load words
+router.get('/word', (req, res) => {
+   Word.find().exec((err, words) => {
+      return res.json(words)
+   })
+})
+
+// load word by song
+router.get('/word/:id', (req, res) => {
+   const { id } = req.params
+   Word.find({ songId: id }).exec((err, words) => {
+      return res.json({ msg: 'Success', words })
+   })
+})
+
+// add vocab
+router.post('/word', (req, res) => {
+   const { songId, wordType, word, translate, image } = req.body
+   const newWord = new Word({
+      songId,
+      wordType,
+      word,
+      translate,
+      image
+   })
+
+   newWord.save(err => {
+      if (err) {
+         return res.json({ msg: 'Error', res: err })
+      }
+      return res.json({ msg: 'Success' })
+   })
+})
+
+// update vocab
+router.put('/word', (req, res) => {
+   const { wordId, word, wordType, translate, image } = req.body
+   Word.findByIdAndUpdate(wordId, { word, wordType, translate, image }, err => {
+      if (err) {
+         return res.json({ msg: 'Error', res: err })
+      }
+      return res.json({ msg: 'Success' })
+   })
+})
+
+// delete vocab
+router.delete('/word', (req, res) => {
+   const { idWord } = req.body
+   Word.findByIdAndRemove(idWord, err => {
+      if (err) {
+         return res.json({ msg: 'Error', res: err })
+      }
+      return res.json({ msg: 'Success' })
+   })
+})
+
+module.exports = router
