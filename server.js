@@ -1,6 +1,7 @@
 const express = require('express')
 const server = express()
-const port = 4000
+const port = process.env.PORT || 4000
+const path = require('path')
 
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -43,7 +44,14 @@ server.use(song)
 server.use(lyrics)
 server.use(word)
 
-server.listen(port, err => {
-   if (err) throw err
-   console.log(`> Ready on http://localhost:${port}`)
-})
+if (process.env.NODE_ENV === 'production') {
+   server.use(express.static('client/build'))
+   server.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+   })
+} else {
+   server.listen(port, err => {
+      if (err) throw err
+      console.log(`> Ready on http://localhost:${port}`)
+   })
+}
