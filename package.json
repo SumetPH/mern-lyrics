@@ -11,7 +11,7 @@
       "client_build": "cd client && yarn build",
       "client_install": "cd client && yarn",
       "dev": "concurrently \"yarn serve\" \"yarn client\"",
-      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn"
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false yarn && yarn client_install && yarn client_build"
    },
    "dependencies": {
       "body-parser": "^1.18.3",

@@ -44,14 +44,14 @@ server.use(song)
 server.use(lyrics)
 server.use(word)
 
-if (process.env.HEROKU === 'production') {
+if (process.env.NODE_ENV === 'production') {
    server.use(express.static('client/build'))
    server.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
    })
-} else {
-   server.listen(port, err => {
-      if (err) throw err
-      console.log(`> Ready on http://localhost:${port}`)
-   })
 }
+
+server.listen(port, err => {
+   if (err) throw err
+   console.log(`> Ready on http://localhost:${port}`)
+})
