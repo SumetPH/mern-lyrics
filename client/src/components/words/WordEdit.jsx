@@ -5,8 +5,7 @@ import Axios from 'axios'
 export class WordEdit extends Component {
    // state
    state = {
-      modal: false,
-      wordType: 'n.'
+      modal: false
    }
 
    // method
@@ -20,7 +19,7 @@ export class WordEdit extends Component {
          data: {
             wordId: this.props.wordId,
             word: this.refs.word.value,
-            wordType: this.state.wordType,
+            wordType: this.refs.wordType.value,
             translate: this.refs.translate.value,
             image: this.refs.image.value
          }
@@ -29,7 +28,6 @@ export class WordEdit extends Component {
          if (res.data.msg === 'Success') {
             this.props.loadWords()
             this.setState({ modal: false, type: 'n.' })
-            this.refs.form.reset()
          }
       })
    }
@@ -37,6 +35,7 @@ export class WordEdit extends Component {
    render() {
       const { modal } = this.state
       const { word } = this.props
+      console.log(word.wordType)
       return (
          <div style={{ color: 'black' }}>
             <button
@@ -79,11 +78,7 @@ export class WordEdit extends Component {
                               <br />
                               <div className="select">
                                  <select
-                                    onChange={e =>
-                                       this.setState({
-                                          wordType: e.target.value
-                                       })
-                                    }
+                                    ref="wordType"
                                     defaultValue={word.wordType}>
                                     <option value="n.">Noun</option>
                                     <option value="v.">Verb</option>
@@ -129,7 +124,9 @@ export class WordEdit extends Component {
                      </button>
                      <button
                         className="button"
-                        onClick={() => this.setState({ modal: !modal })}>
+                        onClick={() => {
+                           this.setState({ modal: !modal })
+                        }}>
                         Cancel
                      </button>
                   </footer>
