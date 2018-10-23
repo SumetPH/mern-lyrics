@@ -44,7 +44,7 @@ server.use(song)
 server.use(lyrics)
 server.use(word)
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.HEROKU === 'production') {
    server.use(express.static('client/build'))
    server.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
