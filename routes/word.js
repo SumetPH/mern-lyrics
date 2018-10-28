@@ -19,12 +19,13 @@ router.get('/word/:id', (req, res) => {
 
 // add vocab
 router.post('/word', (req, res) => {
-   const { songId, wordType, word, translate, image } = req.body
+   const { songId, wordType, word, translate, sentence, image } = req.body
    const newWord = new Word({
       songId,
       wordType,
       word,
       translate,
+      sentence,
       image
    })
 
@@ -38,13 +39,17 @@ router.post('/word', (req, res) => {
 
 // update vocab
 router.put('/word', (req, res) => {
-   const { wordId, word, wordType, translate, image } = req.body
-   Word.findByIdAndUpdate(wordId, { word, wordType, translate, image }, err => {
-      if (err) {
-         return res.json({ msg: 'Error', res: err })
+   const { wordId, word, wordType, translate, sentence, image } = req.body
+   Word.findByIdAndUpdate(
+      wordId,
+      { word, wordType, translate, sentence, image },
+      err => {
+         if (err) {
+            return res.json({ msg: 'Error', res: err })
+         }
+         return res.json({ msg: 'Success' })
       }
-      return res.json({ msg: 'Success' })
-   })
+   )
 })
 
 // delete vocab

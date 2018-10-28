@@ -20,6 +20,7 @@ export class WordAdd extends Component {
             word: this.refs.word.value,
             wordType: this.state.wordType,
             translate: this.refs.translate.value,
+            sentence: this.refs.sentence.value,
             image: this.refs.image.value
          }
       }).then(res => {
@@ -99,6 +100,12 @@ export class WordAdd extends Component {
                                  type="text"
                                  className="input"
                               />
+                           </div>
+                        </div>
+                        <div className="columns">
+                           <div className="column">
+                              <label>Sentence</label>
+                              <textarea className="textarea" ref="sentence" />
                            </div>
                         </div>
                         <div className="columns">

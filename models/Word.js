@@ -6,6 +6,7 @@ const WordSchema = new Schema({
    word: String,
    wordType: String,
    translate: String,
+   sentence: String,
    image: String,
    created: {
       type: Date,

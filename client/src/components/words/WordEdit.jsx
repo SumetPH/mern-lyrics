@@ -21,6 +21,7 @@ export class WordEdit extends Component {
             word: this.refs.word.value,
             wordType: this.refs.wordType.value,
             translate: this.refs.translate.value,
+            sentence: this.refs.sentence.value,
             image: this.refs.image.value
          }
       }).then(res => {
@@ -100,6 +101,16 @@ export class WordEdit extends Component {
                                  type="text"
                                  className="input"
                                  defaultValue={word.translate}
+                              />
+                           </div>
+                        </div>
+                        <div className="columns">
+                           <div className="column">
+                              <label>Sentence</label>
+                              <textarea
+                                 className="textarea"
+                                 ref="sentence"
+                                 defaultValue={word.sentence}
                               />
                            </div>
                         </div>
