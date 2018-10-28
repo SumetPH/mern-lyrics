@@ -7,8 +7,9 @@ export class Navbar extends Component {
       isActive: false
    }
    render() {
+      const { color = 'is-primary' } = this.props
       return (
-         <nav className="navbar is-primary">
+         <nav className={`navbar ${color}`}>
             <div className="navbar-brand">
                <a className="navbar-item" href="/">
                   <img

@@ -17,7 +17,10 @@ const WordsList = ({ songId, words, loadWords, deleteWord }) => {
                         ({word.wordType})
                      </span>
                   </p>
-                  <small>{word.translate}</small>
+                  <small>T : {word.translate}</small>
+                  <br />
+                  <small>S : {word.sentence}</small>
+                  <hr />
                   <div className="image is-16by9">
                      <img src={word.image} alt="" />
                   </div>

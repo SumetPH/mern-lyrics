@@ -36,7 +36,6 @@ export class WordEdit extends Component {
    render() {
       const { modal } = this.state
       const { word } = this.props
-      console.log(word.wordType)
       return (
          <div style={{ color: 'black' }}>
             <button

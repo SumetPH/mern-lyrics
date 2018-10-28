@@ -4,6 +4,7 @@ import Iframe from 'react-iframe'
 
 import Lyrics from '../components/song/Lyrics'
 import WordsList from '../components/words/WordsList'
+import Navbar from '../components/navbar'
 
 class Show extends Component {
    state = {
@@ -78,59 +79,51 @@ class Show extends Component {
 
    render() {
       return (
-         <div className="m" style={{ backgroundColor: '#4a4a4a' }}>
-            <div className="blockA" style={{ backgroundColor: '#4a4a4a' }}>
-               <div
-                  style={{
-                     height: '40%',
-                     width: '100%',
-                     display: 'flex',
-                     justifyContent: 'center',
-                     padding: '1rem'
-                  }}>
-                  <Iframe
-                     className="box has-background-dark has-text-light"
-                     url={
-                        this.state.youtubeId === ''
-                           ? ''
-                           : `https://www.youtube.com/embed/${
-                                this.state.youtubeId
-                             }`
-                     }
-                     position="static"
-                  />
-               </div>
-               <div
-                  style={{
-                     height: '60%',
-                     padding: '1rem'
-                  }}>
-                  <div
-                     className="box has-background-dark has-text-light"
-                     style={{ height: '100%', overflow: 'auto' }}>
-                     <Lyrics
-                        lyrics={this.state.lyrics}
-                        showEditor={this.state.showEditor}
-                        handleEditor={this.handleEditor}
-                        handleChange={this.handleChange}
-                        updateLyrics={this.updateLyrics}
-                     />
+         <div
+            className="hero is-fullheight"
+            style={{ backgroundColor: '#4a4a4a' }}>
+            <Navbar color="is-dark" />
+            <div className="hero-body">
+               <div className="container">
+                  <div className="columns">
+                     <div className="column">
+                        <Iframe
+                           className="box has-background-dark has-text-light"
+                           url={
+                              this.state.youtubeId === ''
+                                 ? ''
+                                 : `https://www.youtube.com/embed/${
+                                      this.state.youtubeId
+                                   }`
+                           }
+                           height="400px"
+                           position="static"
+                        />
+                     </div>
                   </div>
-               </div>
-            </div>
-            <div className="blockB" style={{ backgroundColor: '#4a4a4a' }}>
-               <div
-                  className="box has-background-dark has-text-light"
-                  style={{
-                     height: '100%',
-                     overflow: 'auto'
-                  }}>
-                  <WordsList
-                     songId={this.state.song._id}
-                     words={this.state.words}
-                     loadWords={this.loadWords}
-                     deleteWord={this.deleteWord}
-                  />
+                  <div className="columns" style={{ marginBottom: 0 }}>
+                     <div className="column">
+                        <div className="box has-background-dark has-text-light">
+                           <Lyrics
+                              lyrics={this.state.lyrics}
+                              showEditor={this.state.showEditor}
+                              handleEditor={this.handleEditor}
+                              handleChange={this.handleChange}
+                              updateLyrics={this.updateLyrics}
+                           />
+                        </div>
+                     </div>
+                     <div className="column">
+                        <div className="box has-background-dark has-text-light">
+                           <WordsList
+                              songId={this.state.song._id}
+                              words={this.state.words}
+                              loadWords={this.loadWords}
+                              deleteWord={this.deleteWord}
+                           />
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>

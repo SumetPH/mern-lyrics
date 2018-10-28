@@ -80,7 +80,7 @@ export class Search extends Component {
          return (
             <div
                onClick={() => this.addSong(item)}
-               className="box"
+               className="box search"
                key={item.id}>
                <div className="columns">
                   <div className="column is-2 has-text-centered">
@@ -100,40 +100,44 @@ export class Search extends Component {
       const { search, length, isLoading } = this.state
       return (
          <div>
-            <Navbar />
-            <div className="container">
-               <div className="column">
-                  <h3 className="title is-3">Youtube Search.</h3>
-                  <div className="columns">
+            <Navbar color="is-danger" />
+            <div className="hero is-danger is-bold is-fullheight">
+               <div className="hero-body">
+                  <div className="container">
                      <div className="column">
-                        <input
-                           className="input"
-                           type="text"
-                           onKeyPress={this.searchOnEnter}
-                           ref="search"
-                        />
+                        <h3 className="title is-3">Youtube Search.</h3>
+                        <div className="columns">
+                           <div className="column">
+                              <input
+                                 className="input is-danger"
+                                 type="text"
+                                 onKeyPress={this.searchOnEnter}
+                                 ref="search"
+                              />
+                           </div>
+                           <div className="column is-2 has-text-centered">
+                              <button
+                                 className="button is-danger "
+                                 onClick={this.searchOnButton}>
+                                 Search
+                              </button>
+                           </div>
+                        </div>
                      </div>
-                     <div className="column is-2 has-text-centered">
-                        <button
-                           className="button is-danger"
-                           onClick={this.searchOnButton}>
-                           Search
-                        </button>
+                     <div className="column">{this.searchList(search)}</div>
+                     <div className="column has-text-centered">
+                        {length === 0 ? null : (
+                           <button
+                              className={classnames({
+                                 'button is-warning': true,
+                                 'is-loading': isLoading
+                              })}
+                              onClick={this.moreSearch}>
+                              Load More
+                           </button>
+                        )}
                      </div>
                   </div>
-               </div>
-               <div className="column">{this.searchList(search)}</div>
-               <div className="column has-text-centered">
-                  {length === 0 ? null : (
-                     <button
-                        className={classnames({
-                           'button is-warning': true,
-                           'is-loading': isLoading
-                        })}
-                        onClick={this.moreSearch}>
-                        Load More
-                     </button>
-                  )}
                </div>
             </div>
          </div>

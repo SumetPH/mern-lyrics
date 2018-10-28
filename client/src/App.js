@@ -6,6 +6,7 @@ import './assets/css/ReactToastify.css'
 import List from './pages/List'
 import Show from './pages/Show'
 import Search from './pages/Search'
+import Words from './pages/Words'
 
 class App extends Component {
    render() {
@@ -15,6 +16,7 @@ class App extends Component {
                <ToastContainer />
                <Route exact path="/" component={List} />
                <Route path="/show/:id" component={Show} />
+               <Route path="/words" component={Words} />
                <Route path="/search" component={Search} />
             </div>
          </Router>
