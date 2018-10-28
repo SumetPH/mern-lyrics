@@ -80,7 +80,7 @@ class Show extends Component {
    render() {
       return (
          <div
-            className="hero is-fullheight"
+            className="hero is-dark is-fullheight"
             style={{ backgroundColor: '#4a4a4a' }}>
             <Navbar color="is-dark" />
             <div className="hero-body">
