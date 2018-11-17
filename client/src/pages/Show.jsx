@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Iframe from 'react-iframe'
 
 import Lyrics from '../components/song/Lyrics'
 import WordsList from '../components/words/WordsList'
@@ -32,7 +31,6 @@ class Show extends Component {
 
    loadWords = () => {
       axios.get(`/word/${this.props.match.params.id}`).then(res => {
-         console.log(res.data)
          this.setState({ words: res.data.words })
       })
    }
@@ -87,17 +85,15 @@ class Show extends Component {
                <div className="container">
                   <div className="columns">
                      <div className="column">
-                        <Iframe
+                        <iframe
                            className="box has-background-dark has-text-light"
-                           url={
-                              this.state.youtubeId === ''
-                                 ? ''
-                                 : `https://www.youtube.com/embed/${
-                                      this.state.youtubeId
-                                   }`
-                           }
                            height="400px"
-                           position="static"
+                           width="100%"
+                           src={`https://www.youtube.com/embed/${
+                              this.state.youtubeId
+                           }`}
+                           title="iframe"
+                           allowFullScreen
                         />
                      </div>
                   </div>

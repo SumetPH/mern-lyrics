@@ -12,7 +12,6 @@ export class List extends Component {
 
    componentDidMount = () => {
       Axios.get('/song').then(res => {
-         console.log(res.data.doc)
          this.setState({ song: res.data.doc })
       })
    }
