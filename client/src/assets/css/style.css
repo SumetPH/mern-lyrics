@@ -1,24 +1,24 @@
 .list {
-   background-color: white;
-   color: black;
+  background-color: white;
+  color: black;
 }
 
 .list:hover {
-   background-color: hsl(171, 100%, 41%);
-   color: white;
+  background-color: hsl(171, 100%, 41%);
+  color: white;
 }
 
 .search {
-   background-color: white;
-   color: black;
+  background-color: white;
+  color: black;
 }
 
 .search:hover {
-   background-color: hsl(348, 100%, 61%);
-   color: white;
-   cursor: pointer;
+  background-color: hsl(348, 100%, 61%);
+  color: white;
+  cursor: pointer;
 }
 
-strong {
-   color: white !important;
+.strong {
+  color: white !important;
 }
